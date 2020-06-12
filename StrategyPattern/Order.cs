@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StrategyPattern
 {
-  public class Order
+    public class Order 
     {
         public int OrderId { get; set; }
         public string Item { get; set; }

@@ -6,9 +6,19 @@ namespace StrategyPattern
     {
         static void Main(string[] args)
         {
+            NewMethod();
+        }
+
+        private static void NewMethod()
+        {
             var order = new Order { OrderId = 1, Item = "Phone", ShippingOptions = ShippingOptions.FunCurier };
-            var shippingService = new ShippingCostCalculatorService();
-         var cost =   shippingService.CalculateShippingCost(order);
+
+            ICalculatorShipping calculatorShipping = new FunCurierShipping();
+
+            var shippingService = new ShippingCostCalculatorService(calculatorShipping);
+
+            var cost = shippingService.CalculateShippingCost(order);
+
             Console.WriteLine($"The Final cost for your order is: {cost} ");
         }
     }
