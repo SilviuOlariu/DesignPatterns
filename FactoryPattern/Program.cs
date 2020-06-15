@@ -7,29 +7,26 @@ namespace FactoryPattern
     {
         static void Main(string[] args)
         {
-            Console.Write("what car you want to use: ");
-            var input = Console.ReadLine();
-            var car = GetCar(input);
+            string input = ReadInput();
+
+            AutoFactory factory = new AutoFactory();
+
+            IAuto car = factory.CreateInstance(input);
+
             car.TurnOn();
             car.TurnOff();
-            
+
         }
 
+        
 
-        public static IAuto GetCar(string carName)
+        private static string ReadInput()
         {
-            switch(carName)
-            {
-                case "bmw":
-                    return new BMW();
-                case "audi":
-                    return new Dacia();
-                case "mazda":
-                    return new Mazda();
-                default:
-                    return new NullCar();
-                    
-            }
+            Console.Write("what car do you want to use: ");
+            var input = Console.ReadLine();
+            return input;
         }
+
+
     }
 }
