@@ -9,9 +9,9 @@ namespace FactoryPattern
         {
             string input = ReadInput();
 
-            AutoFactory factory = new AutoFactory();
+            var factory = VehicleFactory.Build(input);
 
-            IAuto car = factory.CreateInstance(input);
+            IAuto car = factory;
 
             car.TurnOn();
             car.TurnOff();
@@ -23,7 +23,7 @@ namespace FactoryPattern
         private static string ReadInput()
         {
             Console.Write("what car do you want to use: ");
-            var input = Console.ReadLine();
+            var input = Console.ReadLine().ToLower();
             return input;
         }
 
